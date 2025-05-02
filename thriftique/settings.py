@@ -150,3 +150,14 @@ MESSAGE_TAGS = {
     messages.ERROR: "danger",
     
 }
+
+
+# Email configuration using GMAIL
+EMAIL_BACKEND= 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'thriftique2025@gmail.com'
+EMAIL_HOST_PASSWORD= 'wjxz piaw mdjf xgfo' #this is from google app password
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Thriftique Admin <Thriftique2025@gmail.com>'
+
