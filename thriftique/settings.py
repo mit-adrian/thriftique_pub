@@ -67,8 +67,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # custom
+                # custom context processors
                 'accounts.context_processors.get_vendor',
+                'accounts.context_processors.get_google_api',
             ],
         },
     },
@@ -162,4 +163,7 @@ EMAIL_HOST_USER = 'thriftique2025@gmail.com'
 EMAIL_HOST_PASSWORD= 'wjxz piaw mdjf xgfo' #this is from google app password
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Thriftique Admin <Thriftique2025@gmail.com>'
+
+#google api
+GOOGLE_API_KEY= 'AIzaSyD0tjeT8OxOBh69Lc17f4sS1doEFxFGeJ0'
 
