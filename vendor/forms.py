@@ -1,4 +1,6 @@
 from django import forms
+
+from menu.models import ProductModel
 from .models import Vendor
 from accounts.validators import allow_only_images_validator
 

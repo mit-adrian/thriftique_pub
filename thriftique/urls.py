@@ -25,7 +25,7 @@ urlpatterns = [
 
     #---
     path("", views.home, name='home'),
-    path('accounts/', include('accounts.urls')),
+    path('', include('accounts.urls')),
 
 
 
