@@ -32,8 +32,8 @@
 																		<li class="gal-img">
 																			<div class="drag-list">
 																				<div class="item-thumb">
-																					{% if profile.profile_picture %}
-																					<img class="thumbnail" src="{{profile.profile_picture.url}}" alt="Profile Picture">
+																					{% if vendor.user_pofile.profile_picture %}
+																					<img class="thumbnail" src="{{ vendor.user_profile.profile_picture.url}}" alt="Profile Picture">
 																					{% else %}
 																					<img class="thumbnail" src="{% static 'images/default-profile.png' %}" alt="Profile Picture">
 																					{% endif %}
