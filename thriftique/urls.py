@@ -33,6 +33,9 @@ urlpatterns = [
 
         # CART
     path('cart/', MarketplaceViews.cart, name='cart'),
+    
+    # SEARCH
+    path('search/', MarketplaceViews.search, name='search'),
 
 
 
