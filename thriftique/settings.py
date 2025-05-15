@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'menu',
     'marketplace',
     'customers',
+    'orders',
+
 ]
 
 MIDDLEWARE = [
@@ -74,6 +76,7 @@ TEMPLATES = [
                 # custom context processors
                 'accounts.context_processors.get_vendor',
                 'accounts.context_processors.get_google_api',
+                'accounts.context_processors.get_paypal_client_id',
                 'marketplace.context_processors.get_cart_counter',
                 'marketplace.context_processors.get_cart_amounts',
                 'accounts.context_processors.get_user_profile',
@@ -172,5 +175,10 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Thriftique Admin <Thriftique2025@gmail.com>'
 
 #google api
-GOOGLE_API_KEY= 'AIzaSyD0tjeT8OxOBh69Lc17f4sS1doEFxFGeJ0'
+GOOGLE_API_KEY = config('GOOGLE_API_KEY')
+
+# paypal client id
+PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID')
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 

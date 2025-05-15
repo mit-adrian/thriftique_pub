@@ -1,0 +1,18 @@
+
+{% autoescape off %}
+
+Greetings! Business Partners,
+    
+    You have received a new order.    
+
+    The new order number: {{ order.order_number }}
+    and Transaction ID: {{ order.payment.transaction_id }}
+
+    Pleasure doing business with you as always.
+
+    Serve it right.
+
+Thriftique-Team =P
+
+
+{% endautoescape %}
