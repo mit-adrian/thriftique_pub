@@ -17,7 +17,11 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="user-dashboard loader-holder">
                         <div class="user-holder">
-                            <h5 class="text-uppercase">OVERVIEW</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="text-uppercase">OVERVIEW</h5>
+                                <p class="text-right">Loggen in as: <b>{{ user.email }}</b></p>
+                            </div>
+                            
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="card">
@@ -25,7 +29,7 @@
                                             Total Orders
                                         </div>
                                         <div class="card-body text-center">
-                                            <a href="#"><h5 class="card-title">125</h5></a>
+                                            <a href="#"><h5 class="card-title">{{ orders_count }}</h5></a>
                                         </div>
                                     </div>
                                     
@@ -36,7 +40,7 @@
                                             Total Revenue
                                         </div>
                                         <div class="card-body text-center">
-                                            <a href="#"><h5 class="card-title">$12,678.00</h5></a>
+                                            <a href="#"><h5 class="card-title">Php {{ total_revenue|floatformat:2 }}</h5></a>
                                         </div>
                                     </div>
                                     
@@ -47,7 +51,7 @@
                                             This Month
                                         </div>
                                         <div class="card-body text-center">
-                                            <a href="#"><h5 class="card-title">$980.00</h5></a>
+                                            <a href="#"><h5 class="card-title">Php {{ current_month_revenue|floatformat:2 }}</h5></a>
                                         </div>
                                     </div>
                                     
@@ -55,67 +59,39 @@
                             </div>
                             <br>
                             <br>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="row">
-                                    <div class="element-title has-border right-filters-row">
-                                        <h5>Recent Orders</h5>
-                                        <div class="right-filters row pull-right">
-                                            <div class="col-lg-6 col-md-6 col-xs-6">
-                                                <div class="input-field">
-                                                    <select class="chosen-select-no-single">
-                                                        <option selected="selected" value="">Select Orders Status</option>
-                                                        <option value="Processing">Processing</option>
-                                                        <option value="Cancelled">Cancelled</option>
-                                                        <option value="Completed">Completed</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <h5 class="text-uppercase">RECENT ORDERS</h5>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="user-orders-list">
                                         <div class="responsive-table">
-                                            <ul class="table-generic">
-                                                <li class="order-heading-titles">
-                                                    <div>Order id</div>
-                                                    <div>Date</div>
-                                                    <div>Total Price</div>
-                                                    <div>Charges</div>
-                                                    <div>Received</div>
-                                                    <div>Status</div>
-                                                </li>
-                                                <li class="order-heading-titles">
-                                                    <div><a href="#" data-toggle="modal" data-target="#order-det-22606">order-22606</a></div>
-                                                    <div>Apr 9,2020</div>
-                                                    <div>£ 38.99</div>
-                                                    <div>£ 3.90</div>
-                                                    <div>£ 35.09</div>
-                                                    <div><span class="order-status" style="background-color: #047a06;">Completed</span></div>
-                                                </li>
-                                                
-                                                
-                                                
-                                                <li class="order-heading-titles">
-                                                    <div><a href="#" data-toggle="modal" data-target="#order-det-22606">order-22583</a></div>
-                                                    <div>Apr 9,2020</div>
-                                                    <div>£ 26.22</div>
-                                                    <div>£ 2.62</div>
-                                                    <div>£ 23.60</div>
-                                                    <div><span class="order-status" style="background-color: #1e73be;">Processing</span></div>
-                                                </li>
-                                                <li class="order-heading-titles">
-                                                    <div><a href="#" data-toggle="modal" data-target="#order-det-22606">order-22493</a></div>
-                                                    <div>Apr 2,2020</div>
-                                                    <div>£ 28.24</div>
-                                                    <div>£ 2.82</div>
-                                                    <div>£ 25.42</div>
-                                                    <div><span class="order-status" style="background-color: #047a06;">Completed</span></div>
-                                                </li>
-                                            </ul>
+
+                                            <table class="table table-hover" id="myOrdersTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Order #</th>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Total</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Date</th>
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for order in recent_orders %}
+                                                    <tr>
+                                                        <td>{{ order.order_number }}</td>                                                        
+                                                        <td>{{ order.name }}</td>
+                                                        <td>Php {{ order.get_total_by_vendor.grand_total|floatformat:2 }}</td>
+                                                        <td>{{ order.status }}</td>
+                                                        <td>{{ order.created_at }}</td>
+                                                        <td><a href="{% url 'vendor_order_detail' order.order_number %}" class="btn btn-danger">Details</a></td>
+                                                        
+                                                    </tr>
+                                                    {% endfor %}
+
+                                                </tbody>
+                                            </table>
 
                                         </div>												
                                     </div>

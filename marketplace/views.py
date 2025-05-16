@@ -138,7 +138,7 @@ def search(request):
     longitude = request.GET['lng']
     radius = request.GET['radius']
     keyword = request.GET['keyword']
-    print(address, latitude, longitude, radius, keyword)
+
 
     # get vendors id that has product item is looking for
     fetch_vendors_by_productitems = ProductModel.objects.filter(product_title__icontains=keyword, is_available=True).values_list('vendor', flat=True)
