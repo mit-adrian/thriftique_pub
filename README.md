@@ -32,6 +32,9 @@
 
 ---
 ### 🎥 Video Url for the App Demonstration
-## Link
+> Hover and Click the thumbnail 👇👇👇 to get redirected to my youtube channel... 
 [![Watch the video](thriftique/static/logo/thumbnail.png?raw=true)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
+---
+<p align="center">Thank You ❤️</p>
+---
