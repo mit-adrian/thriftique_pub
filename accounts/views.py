@@ -265,3 +265,10 @@ def reset_password(request):
             messages.error(request, 'Password do not match!')
             return redirect('reset_password')
     return render(request, 'accounts/reset_password.html')
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@api_view(['GET'])
+def health_check(request):
+    return Response({"status": "API is running 🚀"})

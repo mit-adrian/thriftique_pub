@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #----
+
+    'rest_framework',
+    'corsheaders',
 
     # ----
     'accounts',
@@ -51,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,6 +65,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'orders.request_object.RequestObjectMiddleware', # custom middleware, created to access the request object in models.py
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 ROOT_URLCONF = 'thriftique.urls'
 
@@ -173,7 +181,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'thriftique2025@gmail.com'
 EMAIL_HOST_PASSWORD= 'wjxz piaw mdjf xgfo' #this is from google app password
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Thriftique Admin <Thriftique2025@gmail.com>'
+DEFAULT_FROM_EMAIL = 'Thriftique Admin <thriftique2025@gmail.com>'
 
 #google api
 GOOGLE_API_KEY = config('GOOGLE_API_KEY')

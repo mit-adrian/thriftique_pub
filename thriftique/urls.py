@@ -21,7 +21,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from marketplace import views as MarketplaceViews
 
+from accounts.views import health_check
+
+
+
 urlpatterns = [
+    path('api/health/', health_check),
+    path('vendor/', include('vendor.urls')),
+
+
+
     path('admin/', admin.site.urls),
 
     #---

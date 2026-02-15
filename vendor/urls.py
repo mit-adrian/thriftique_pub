@@ -1,8 +1,12 @@
+from .api_views import public_vendor_list
+
 from django.urls import path, include
 from . import views
 from accounts import views as AccountViews
 
 urlpatterns = [
+   
+
     path('', AccountViews.vendorDashboard, name='vendor'),
     path('profile/', views.vendorProfile, name='vendorProfile'),
     path('menu-builder/', views.menu_builder, name='menu_builder'),
@@ -27,6 +31,9 @@ urlpatterns = [
     
     path('order_detail/<int:order_number>/', views.order_detail, name='vendor_order_detail'),
     path('my_orders/', views.my_orders, name='vendor_my_orders'),
+
+     # Public API
+    path('api/vendors/', public_vendor_list, name='api_public_vendor_list'),
 
 
 ]
